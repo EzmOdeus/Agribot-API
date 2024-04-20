@@ -362,50 +362,12 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCustomerCustomer extends Schema.CollectionType {
-  collectionName: 'customers';
-  info: {
-    singularName: 'customer';
-    pluralName: 'customers';
-    displayName: 'customer';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    username: Attribute.String & Attribute.Required & Attribute.Unique;
-    email: Attribute.Email & Attribute.Required & Attribute.Unique;
-    password: Attribute.Password & Attribute.Required;
-    sensor_1s: Attribute.Relation<
-      'api::customer.customer',
-      'oneToMany',
-      'api::sensor1.sensor1'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::customer.customer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::customer.customer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiSensor1Sensor1 extends Schema.CollectionType {
   collectionName: 'sensor1s';
   info: {
     singularName: 'sensor1';
     pluralName: 'sensor1s';
-    displayName: 'sensor1';
+    displayName: 'sensor';
     description: '';
   };
   options: {
@@ -415,11 +377,14 @@ export interface ApiSensor1Sensor1 extends Schema.CollectionType {
     temperature: Attribute.Float;
     humdity: Attribute.Float;
     sunlight: Attribute.Float;
-    customerid: Attribute.Relation<
+    userid: Attribute.Relation<
       'api::sensor1.sensor1',
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    title: Attribute.String;
+    description: Attribute.RichText;
+    ph: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -879,7 +844,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::customer.customer': ApiCustomerCustomer;
       'api::sensor1.sensor1': ApiSensor1Sensor1;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

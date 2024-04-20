@@ -70,7 +70,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::sensor1.sensor1",
-      "mappedBy": "customerid"
+      "mappedBy": "userid"
     }
   }
 }

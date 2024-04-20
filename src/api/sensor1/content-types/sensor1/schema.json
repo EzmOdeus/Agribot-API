@@ -4,7 +4,7 @@
   "info": {
     "singularName": "sensor1",
     "pluralName": "sensor1s",
-    "displayName": "sensor1",
+    "displayName": "sensor",
     "description": ""
   },
   "options": {
@@ -21,11 +21,20 @@
     "sunlight": {
       "type": "float"
     },
-    "customerid": {
+    "userid": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "sensor_1s"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "ph": {
+      "type": "float"
     }
   }
 }
