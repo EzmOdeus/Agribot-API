@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sensor1s",
+  "info": {
+    "singularName": "sensor1",
+    "pluralName": "sensor1s",
+    "displayName": "sensor1",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "temperature": {
+      "type": "float"
+    },
+    "humdity": {
+      "type": "float"
+    },
+    "sunlight": {
+      "type": "float"
+    },
+    "customerid": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sensor_1s"
+    }
+  }
+}
